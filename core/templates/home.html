@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Covid Deaths</title>
+</head>
+<body>
+    <form action="{% url 'import' %}" method="POST">
+        {% csrf_token %}
+        <textarea name="data"></textarea>
+        <input type="submit" value="Import">
+    </form>
+</body>
+</html>

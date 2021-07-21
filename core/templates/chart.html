@@ -1,0 +1,55 @@
+{% load tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts</title>
+</head>
+<body>
+    <h1>Top 10 by Webinars Attended</h1>
+    <table>
+        {% for x in top10byWebinar %}
+            <tr>
+                <td>{% getParticipant x.participant %}</td>
+                <td>{{x.webinars_attended}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <h1>Top 10 by Minutes Watched</h1>
+    <table>
+        {% for x in top10byMinutes %}
+            <tr>
+                <td>{% getParticipant x.participant %}</td>
+                <td>{{x.minutes}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <h1>Webinar Stats</h1>
+    <table>
+        <tr>
+            <td>Webinar #</td>
+            <td>Registrants:</td>
+            <td>Attendees</td>
+            <td>Minutes needed</td>
+            <td>With Certificate</td>
+            <td>New registrants</td>
+            <td>New attendees</td>
+        </tr>
+        {% for webinar in webinars %}
+            <tr>
+                <td>{{webinar}}</td>
+                <td>{{webinar.ticket.all.count}}</td>
+                <td>{{webinar.attendees.all.count}}</td>
+                <td>{{webinar.minutes_for_certificate}}</td>
+                <td>{{webinar.with_cert.all.count}}</td>
+                <td>{{webinar.new_registrants.all.count}}</td>
+                <td>{{webinar.new_attendees.all.count}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
